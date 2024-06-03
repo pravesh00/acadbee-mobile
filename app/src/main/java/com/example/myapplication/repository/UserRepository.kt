@@ -43,7 +43,7 @@ class UserRepository {
         @author : Pravesh Choudhary
      */
     fun login(name: String, password: String): Boolean {
-        if(name.equals("Pravesh") and password.equals("Pravesh"))
+        if(name.equals("") and password.equals(""))
             return true
         else return false
     }

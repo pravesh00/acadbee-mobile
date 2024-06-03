@@ -1,13 +1,11 @@
 package com.example.myapplication.ui
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import androidx.lifecycle.Observer
 import com.example.myapplication.R
 import com.example.myapplication.data.Gender
 import com.example.myapplication.data.Student
@@ -27,26 +25,24 @@ class LoginActivity : AppCompatActivity() {
         binding.button.setOnClickListener(View.OnClickListener {
             login()
         })
-
         val root = binding.root
         setContentView(root)
     }
 
     private fun login() {
         val user = Student(binding.txtUserName.text.toString(),
-            binding.txtPassword.text.toString(),
-            Gender.MALE,
-            "",
-            "",
-            1999,
-            2001
-            )
+            binding.txtPassword.text.toString())
         loginViewModel.setUser(user)
-        val check = loginViewModel.login()
+        loginViewModel.login(::onCallbackCalled)
+    }
+    private fun onCallbackCalled(check: Boolean){
         if(check){
-            Toast.makeText(this, "Login Done", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, resources.getString(R.string.login_success), Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, HomeActivity::class.java)
+            startActivity(intent)
+
         }else {
-            Toast.makeText(this, "Wrong Credentials", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, resources.getString(R.string.login_denied), Toast.LENGTH_SHORT).show()
         }
     }
 

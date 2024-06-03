@@ -12,11 +12,11 @@ package com.example.myapplication.data
 data class Student (
     override val userName: String,
     override val password: String,
-    override val gender: Gender,
-    override val profileImageUrl: String,
-    val instituteName: String,
-    val yearStart: Int,
-    val yearEnd: Int
+    override val gender: Gender = Gender.NOT_SPECIFIED,
+    override val profileImageUrl: String = "",
+    val instituteName: String = "",
+    val yearStart: Int = 1999,
+    val yearEnd: Int = 1999
 ) : User(userName, password, gender = Gender.NOT_SPECIFIED, profileImageUrl) {
     override fun displayUserType(): String {
         return "STUDENT"
