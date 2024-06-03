@@ -10,10 +10,10 @@ package com.example.myapplication.data
     @author : Pravesh Choudhary
  */
 data class Instructor(
-    val userName: String,
-    val password: String,
-    val gender: Gender,
-    val profileImageUrl: String,
+    override val userName: String,
+    override val password: String,
+    override val gender: Gender,
+    override val profileImageUrl: String,
     val currentInstituteName: String
 ): User(userName, password, gender = Gender.NOT_SPECIFIED, profileImageUrl) {
     override fun displayUserType(): String {

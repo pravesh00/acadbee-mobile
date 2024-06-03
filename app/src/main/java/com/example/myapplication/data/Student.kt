@@ -10,10 +10,10 @@ package com.example.myapplication.data
     @author : Pravesh Choudhary
  */
 data class Student (
-    val userName: String,
-    val password: String,
-    val gender: Gender,
-    val profileImageUrl: String,
+    override val userName: String,
+    override val password: String,
+    override val gender: Gender,
+    override val profileImageUrl: String,
     val instituteName: String,
     val yearStart: Int,
     val yearEnd: Int

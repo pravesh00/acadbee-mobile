@@ -1,4 +1,4 @@
-package com.example.myapplication.Repository
+package com.example.myapplication.repository
 
 import com.example.myapplication.data.User
 
@@ -43,7 +43,9 @@ class UserRepository {
         @author : Pravesh Choudhary
      */
     fun login(name: String, password: String): Boolean {
-        throw NotImplementedError()
+        if(name.equals("Pravesh") and password.equals("Pravesh"))
+            return true
+        else return false
     }
 
     /**

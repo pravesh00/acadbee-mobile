@@ -9,10 +9,10 @@ package com.example.myapplication.data
  */
 
 abstract class User(
-    userName: String,
-    password: String,
-    gender: Gender,
-    profileImageUrl: String
+    open val userName: String,
+    open val password: String,
+    open val gender: Gender,
+    open val profileImageUrl: String
 ) {
     abstract fun displayUserType(): String
 }
