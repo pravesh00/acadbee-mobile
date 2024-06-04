@@ -3,6 +3,7 @@ package com.example.myapplication.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.myapplication.data.File
 import com.example.myapplication.databinding.ItemFileviewBinding
 
@@ -18,10 +19,9 @@ class FileAdapter(private val list: ArrayList<File>) : RecyclerView.Adapter<File
         var file = list[position]
         holder.binding.txtTitle.setText(file.title)
         holder.binding.txtDescription.setText(file.description)
-//        Glide.with(holder.itemView.context).load(event.photo)
-//
-//            .centerCrop()
-//            .into(holder.binding.imgPhoto)
+        Glide.with(holder.itemView.context).load(file.thumbnailUrl)
+            .fitCenter()
+            .into(holder.binding.imgFileIcon)
 //        holder.binding.eventView.setOnClickListener{
 //            var intent = Intent(holder.binding.eventView.context,EventDetailActivity::class.java)
 //            var bundle = Bundle()
