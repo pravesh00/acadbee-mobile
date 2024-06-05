@@ -1,5 +1,6 @@
 package com.example.myapplication.data
 
+
 data class CourseFile(
     override var title: String,
     override var description: String,

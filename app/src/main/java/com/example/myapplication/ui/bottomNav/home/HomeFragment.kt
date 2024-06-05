@@ -1,11 +1,17 @@
 package com.example.myapplication.ui.bottomNav.home
 
+import android.app.DownloadManager
+import android.content.BroadcastReceiver
+import android.content.Context
+import android.content.Intent
+import android.content.IntentFilter
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -14,16 +20,18 @@ import com.example.myapplication.adapter.FileAdapter
 import com.example.myapplication.data.CourseFile
 import com.example.myapplication.data.File
 import com.example.myapplication.databinding.FragmentHomeBinding
+import com.example.myapplication.util.OnItemClickListener
 import com.example.myapplication.viewmodel.HomeViewModel
 import java.lang.Thread.sleep
 
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment(), OnItemClickListener<File> {
 
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
     private val viewModel = HomeViewModel()
-    lateinit var list : ArrayList<File>
-    lateinit var adapter: FileAdapter
+    private lateinit var list : ArrayList<File>
+    private lateinit var adapter: FileAdapter
+    private lateinit var buttonClickListener: OnItemClickListener<File>
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -34,7 +42,14 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
         list = ArrayList<File>()
-        adapter = FileAdapter(list)
+
+        buttonClickListener = object : OnItemClickListener<File> {
+            override fun onItemClick(position: Int, data: File) {
+                viewModel.downLoadFile(data, requireContext())
+            }
+        }
+
+        adapter = FileAdapter(list,this, buttonClickListener)
         binding.fileRecycleView.adapter = adapter
         binding.fileRecycleView.layoutManager = LinearLayoutManager(this.activity)
 
@@ -56,5 +71,9 @@ class HomeFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    override fun onItemClick(position: Int, data: File) {
+       //TODO: Add Intent to open new Activity
     }
 }
