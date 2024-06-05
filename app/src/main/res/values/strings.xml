@@ -4,6 +4,6 @@
     <string name="login_denied">Wrong Credentials</string>
     <string name="title_activity_home">HomeActivity</string>
     <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
+    <string name="title_search">Search</string>
     <string name="title_notifications">Notifications</string>
 </resources>

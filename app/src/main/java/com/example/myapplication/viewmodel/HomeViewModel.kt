@@ -14,7 +14,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.lang.Thread.sleep
 
-class HomeViewModel : ViewModel() {
+class HomeViewModel : BaseViewModel() {
     val filesList = MutableLiveData<ArrayList<File>>()
     private val fileRepository = FileRepository.getInstance()
 

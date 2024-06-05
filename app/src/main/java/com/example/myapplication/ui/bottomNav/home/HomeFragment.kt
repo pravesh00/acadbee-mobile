@@ -20,6 +20,7 @@ import com.example.myapplication.adapter.FileAdapter
 import com.example.myapplication.data.CourseFile
 import com.example.myapplication.data.File
 import com.example.myapplication.databinding.FragmentHomeBinding
+import com.example.myapplication.ui.FileActivity
 import com.example.myapplication.util.OnItemClickListener
 import com.example.myapplication.viewmodel.HomeViewModel
 import java.lang.Thread.sleep
@@ -74,6 +75,10 @@ class HomeFragment : Fragment(), OnItemClickListener<File> {
     }
 
     override fun onItemClick(position: Int, data: File) {
-       //TODO: Add Intent to open new Activity
+        val intent = Intent(this@HomeFragment.activity, FileActivity::class.java);
+        val bundle = Bundle();
+        bundle.putParcelable("file", data)
+        intent.putExtras(bundle)
+        requireContext().startActivity(intent)
     }
 }
