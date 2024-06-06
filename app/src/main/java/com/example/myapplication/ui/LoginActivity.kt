@@ -9,9 +9,12 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.R
 import com.example.myapplication.data.Gender
 import com.example.myapplication.data.Student
+import com.example.myapplication.database.AppDatabase
 import com.example.myapplication.databinding.ActivityLoginBinding
+import com.example.myapplication.repository.FileRepository
 import com.example.myapplication.repository.UserRepository
 import com.example.myapplication.viewmodel.LoginViewModel
+import kotlin.math.log
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
@@ -25,6 +28,8 @@ class LoginActivity : AppCompatActivity() {
         binding.button.setOnClickListener(View.OnClickListener {
             login()
         })
+        val appDatabase = AppDatabase(this.applicationContext)
+        loginViewModel.insertDummy(appDatabase)
         val root = binding.root
         setContentView(root)
     }
