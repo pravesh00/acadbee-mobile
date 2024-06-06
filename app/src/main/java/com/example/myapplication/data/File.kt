@@ -1,5 +1,6 @@
 package com.example.myapplication.data
 
+import android.os.Parcelable
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
@@ -11,4 +12,4 @@ abstract class File (
     @ColumnInfo(name = "description") open var description: String,
     @ColumnInfo(name = "url") open var url: String,
     @ColumnInfo(name = "thumbnailUrl") open var thumbnailUrl: String
-)
+): Parcelable

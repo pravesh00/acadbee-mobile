@@ -18,14 +18,12 @@ class FileRepository {
     companion object {
         private var INSTANCE: FileRepository? = null
 
-
         fun getInstance(): FileRepository {
             if (INSTANCE == null) {
                 INSTANCE = FileRepository()
             }
             return INSTANCE!!
         }
-
 
     }
 
@@ -38,14 +36,13 @@ class FileRepository {
      */
     suspend fun getFiles(context: Context): List<File> {
         val list = AppDatabase.invoke(context).fileDao().getAll()
-        Log.d("get", list.size.toString())
         return list
     }
 
     suspend fun addDummyData(appDatabase: AppDatabase) {
-        Log.d("hell", "p")
-        Log.d("hell", "p")
-        appDatabase.fileDao().insertAllCourseFiles(CourseFile(0,"RD Sharma", "This is description", "hell", "https://5.imimg.com/data5/SELLER/Default/2022/11/KW/DU/MV/106144956/maths-1.jpg", "a"))
-        Log.d("hell","p")
+        appDatabase.fileDao().insertAllCourseFiles(CourseFile(0,"RD Sharma", "This is description", "ttps://m.media-amazon.com/images/I/51PqozDOOPL._SY445_SX342_.jpg", "https://5.imimg.com/data5/SELLER/Default/2022/11/KW/DU/MV/106144956/maths-1.jpg", "a"),
+            CourseFile(0,"RD Sharma", "This is description", "ttps://m.media-amazon.com/images/I/51PqozDOOPL._SY445_SX342_.jpg", "https://5.imimg.com/data5/SELLER/Default/2022/11/KW/DU/MV/106144956/maths-1.jpg", "a"),
+            CourseFile(0,"RD Sharma", "This is description", "ttps://m.media-amazon.com/images/I/51PqozDOOPL._SY445_SX342_.jpg", "https://5.imimg.com/data5/SELLER/Default/2022/11/KW/DU/MV/106144956/maths-1.jpg", "a"),
+            CourseFile(0,"RD Sharma", "This is description", "ttps://m.media-amazon.com/images/I/51PqozDOOPL._SY445_SX342_.jpg", "https://5.imimg.com/data5/SELLER/Default/2022/11/KW/DU/MV/106144956/maths-1.jpg", "a"))
     }
 }
